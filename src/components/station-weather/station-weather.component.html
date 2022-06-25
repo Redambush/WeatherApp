@@ -1,0 +1,34 @@
+<mat-card>
+  <h2 style="text-align: center">Weather info</h2>
+  <mat-table [dataSource]="weatherData" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <ng-container *ngIf="column == 'timestamp'">
+        <mat-header-cell *matHeaderCellDef>Time</mat-header-cell>
+        <mat-cell *matCellDef="let emp">{{emp.value.timestamp}}</mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column == 'humidity'">
+        <mat-header-cell *matHeaderCellDef>Humidity</mat-header-cell>
+        <mat-cell *matCellDef="let emp">{{emp.value.humidity}}</mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column == 'pm2.5'">
+        <mat-header-cell *matHeaderCellDef>PM 2.5</mat-header-cell>
+        <mat-cell *matCellDef="let emp">{{emp.value.pm25}}</mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column == 'pm10'">
+        <mat-header-cell *matHeaderCellDef>PM 1O</mat-header-cell>
+        <mat-cell *matCellDef="let emp">{{emp.value.pm10}}</mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column == 'rain'">
+        <mat-header-cell *matHeaderCellDef>Rain</mat-header-cell>
+        <mat-cell *matCellDef="let emp">{{emp.value.rain ? "Is raining" : "No rain"}}</mat-cell>
+      </ng-container>
+      <ng-container *ngIf="column == 'temperature'">
+        <mat-header-cell *matHeaderCellDef>Temperature</mat-header-cell>
+        <mat-cell *matCellDef="let emp">{{emp.value.temperature}}</mat-cell>
+      </ng-container>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let emp; columns: displayedColumns"></mat-row>
+  </mat-table>
+</mat-card>

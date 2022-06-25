@@ -1,0 +1,8 @@
+.station-details-container {
+  text-align: center;
+  height: calc(100vh - 400px);
+}
+
+.station-details-container span {
+  font-size: 20px;
+}

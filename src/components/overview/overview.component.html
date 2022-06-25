@@ -1,0 +1,25 @@
+<mat-card>
+  <h2 style="text-align: center">Dostępne stacje</h2>
+  <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+      <mat-header-cell *matHeaderCellDef>{{ column }}</mat-header-cell>
+      <ng-container *ngIf="column == 'Actions'">
+        <mat-cell *matCellDef="let emp">
+          <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon"
+            (click)="openStationWeatherDetails(emp)">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+
+          <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon"
+                  (click)="openStationInfoDialog(emp)">
+            <mat-icon>info</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-cell *matCellDef="let emp">{{ emp[column] }}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let emp; columns: displayedColumns"></mat-row>
+  </mat-table>
+</mat-card>
